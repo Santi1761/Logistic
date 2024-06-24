@@ -1,0 +1,30 @@
+name: Pruebas
+
+on: 
+  push:
+    branches: [ "dev" ]
+  pull_request:
+      branches: [ "dev" ]
+
+  workflow_dispatch:
+
+jobs:  
+  build:   
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Mostrar un mensaje"
+        run: echo "Hello, world!"
+
+      - name: "Variables Github"
+        run: |          
+          echo "GitHub Event: ${{ toJson(github.event) }}"
+      - name: "Install Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12.3
+
+
+      
+
+      

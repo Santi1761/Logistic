@@ -1,0 +1,1 @@
+Para ejecutar estas pruebas se debe poner a correr el servidor primero y debe contar con la extensión de selenium en el navegador

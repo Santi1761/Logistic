@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Users</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/users_search.css' %}">
+</head>
+
+<body>
+
+    <header class="user-container">
+        <div class="icesi aling-left">
+            <img src="{% static 'images/logo-icesi-azul.webp' %}">
+        </div>
+
+        <div class="notification aling-right">
+            <img src="/static/icons/campana.png">
+        </div>
+
+        <div class="user-info">
+            <p>{{ request.user.username }}</p>
+
+        </div>
+
+        <div class="user-image">
+            <a href="{% url 'user_profile' %}">
+                <img src="/static/images/profile.jpg">
+            </a>
+        </div>
+    </header>
+
+    <section class="main">
+
+        <nav class="sidebar close">
+
+            <header>
+                <div class="text logo">
+                    <span>MENU</span>
+                </div>
+                <img src="{% static 'icons/menu.png' %}" class="toggle">
+            </header>
+
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul>
+                        <div class="menu-items">
+                            <li>
+                                <a href="{% url 'home' %}">
+                                    <img src="{% static 'icons/home.png' %}" class="icon">
+                                    <span class="text nav-text">Inicio</span>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="{% url 'create_event' %}">
+                                    <img src="{% static 'icons/create.png' %}" class="icon">
+                                    <span class="text nav-text">Crear Evento</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'users_search' %}">
+                                    <img src="{% static 'icons/lupa.png' %}" class="icon">
+                                    <span class="text nav-text">Buscar Usuario</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'events_calendar' %}">
+                                    <img src="{% static 'icons/calendar.png' %}" class="icon">
+                                    <span class="text nav-text">Calendario</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'historic_deleted_events' %}">
+                                    <img src="{% static 'icons/trash.png' %}" class="icon">
+                                    <span class="text nav-text">Historial</span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="bottom-content">
+                    <li>
+                        <a href="{% url 'logout' %}">
+                            <img src="{% static 'icons/logout.png' %}" class="icon">
+                            <span class="text nav-text">Salir</span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <div class="sun-moon">
+                            <img src="{% static 'icons/luna.png' %}" class="moon">
+                            <img src="{% static 'icons/sol.png' %}" class="sun">
+                        </div>
+                        <span class="mode-text text">Modo Oscuro</span>
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                </div>
+
+            </div>
+            </div>
+        </nav>
+
+        <div class="home">
+            <div class="profile">
+                <h1 class="text">Buscar Usuarios</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="search_query" placeholder="Escribe el nombre del usuario o el ID">
+                    <button type="submit">Buscar</button>
+                </form>
+                {% if users %}
+                <h2 class="text">Resultados:</h2>
+                <ul>
+                    {% for user in users %}
+                    <li>
+                        <div class="info">
+
+                            <div class="picture"><strong></strong><img src="/static/images/profile.jpg" class="picture">
+                            </div>
+
+                            <div class="user-data">
+                                <strong style="display: inline-block;">Nombre de usuario:</strong>
+                                <p style="display: inline-block;">{{ user.username }}</p>
+                                <br>
+                                <strong style="display: inline-block;">ID:</strong>
+                                <p style="display: inline-block;">{{ user.id }}</p>
+                                <br>
+                                <strong style="display: inline-block;">Ultimo ingreso:</strong>
+                                <p style="display: inline-block;">{{ user.last_login }}</p>
+
+                                {% if user.is_superuser %}
+                                <br>
+                                <strong style="display: inline-block;">Rol:</strong>
+                                <p style="display: inline-block;">Admin</p>
+                                {% else %}
+                                <br>
+                                <strong style="display: inline-block;">Rol:</strong>
+                                <p style="display: inline-block;">Gestor</p>
+                                {% endif %}
+                            </div>
+
+
+                        </div>
+
+
+                        <br>
+                        <br>
+                        <br>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'js/home.js' %}"></script>
+</body>
+
+</html>

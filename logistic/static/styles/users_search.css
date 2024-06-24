@@ -1,0 +1,625 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root {
+
+    --body-color: #C2DDFA;
+    --sidebar-color: #FFFFFF;
+    --primary-color: #C2DDFA;
+    --primary-color-light: #9827B00D;
+    --toggle-color: #C2DDFA;
+    --text-color: #000000;
+
+    --tran-03: all 0.2s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.2s ease;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-width: 300px;
+    background-color: #f1f1f1;
+    color: #444;
+    transition: background-color 0.5s ease;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+body.dark {
+    background-color: #424242;
+    color: #ddd;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark li,
+body.dark input,
+body.dark button {
+    color: #ddd;
+}
+
+body.dark input:focus,
+body.dark button {
+    background-color: #5c5c5c;
+}
+
+body.dark button:hover {
+    background-color: #3e3e3e;
+}
+
+h1,
+h2 {
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1 {
+    margin: 24px 0;
+    font-size: 44px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+h1:before,
+h1:after {
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 10px;
+    background-color: #5d6d7e;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    display: none;
+}
+
+h1:before {
+    left: -120px;
+}
+
+h1:after {
+    right: -120px;
+}
+
+h2 {
+    margin: 24px 0;
+    font-size: 28px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    box-shadow: 0 1px 4px #ddd;
+    border-radius: 16px;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.5s ease;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 1px 6px 1px #4CAF50;
+}
+
+button[type="submit"] {
+    font-size: 18px;
+    padding: 12px 16px;
+    margin: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background-color: #45A049;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/*Esto es para modificarlos globalmente y no tener que ir clasexclase */
+:root {
+
+    --body-color: #C2DDFA;
+    --sidebar-color: #FFFFFF;
+    --primary-color: #C2DDFA;
+    --primary-color-light: #9827B00D;
+    --toggle-color: #C2DDFA;
+    --text-color: #000000;
+
+    --tran-03: all 0.2s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.2s ease;
+}
+
+body {
+    min-height: 100vh;
+    transition: var(--tran-05);
+    overflow: hidden;
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+}
+
+body.dark {
+    --body-color: #18191A;
+    --sidebar-color: #242526;
+    --primary-color-light: #3A3B3C;
+    --toggle-color: #FFFFFF;
+    --text-color: #CCCCCC;
+}
+
+
+.user-container {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+}
+
+.icesi img {
+    cursor: pointer;
+    height: 50px;
+}
+
+.user-image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+
+.notification {
+    display: flex;
+    margin-left: auto;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-top: 2px;
+}
+
+
+img:hover {
+    transform: scale(1.05);
+}
+
+.align-left {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.align-right {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.align-left img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.align-right img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+
+.bottom-content img {
+    height: 24px;
+    width: 24px;
+}
+
+.node img {
+    height: 24px;
+    width: 24px;
+
+}
+
+
+.sidebar {
+    position: fixed;
+    top: -35px;
+    left: 0;
+    height: calc(100vh - 50px);
+    width: 500px;
+    padding: 10px 10px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+    overflow: hidden;
+    margin-top: 100px;
+}
+
+.sidebar.close {
+    width: 88px;
+}
+
+.sidebar li {
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon {
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon {
+    min-width: 45px;
+    border-radius: 10px;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+
+.sidebar .text,
+.sidebar .icon {
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text {
+    opacity: 0;
+}
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar header .logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profe {
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img {
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle {
+    position: absolute;
+    top: 20%;
+    right: 0px;
+    height: 35px;
+    width: 35px;
+
+    color: var(--sidebar-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle {
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle {
+    width: 50%;
+    top: 20%;
+    margin-right: 27px;
+}
+
+.sidebar .menu {
+    margin-top: 40px;
+}
+
+
+.sidebar li a {
+    list-style: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover {
+    background-color: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+.menu-bar::-webkit-scrollbar {
+    display: none;
+}
+
+
+.sidebar .menu-bar .mode {
+    border-radius: 6px;
+
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon {
+    height: 50px;
+    width: 60px;
+}
+
+/*Aqui hay problemas*/
+.mode .sun-moon img {
+    position: absolute;
+}
+
+.mode .sun-moon img.sun {
+    opacity: 0;
+}
+
+body.dark .mode .sun-moon img.sun {
+    opacity: 1;
+}
+
+body.dark .mode .sun-moon img.moon {
+    opacity: 0;
+}
+
+
+.menu-bar .bottom-content .toggle-switch {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05)
+}
+
+.switch::before {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before {
+    left: 20px;
+}
+
+
+
+
+
+
+
+.home {
+    background-color: var(--primary-color);
+    min-height: 100vh;
+    transition: var(--tran-05);
+    margin-left: 90px;
+
+    /* position: absolute; */
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(94.1%);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home .text {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--text-color);
+    padding: 12px 60px;
+
+}
+
+.sidebar.close~.home {
+    left: 78px;
+    height: 100vh;
+    width: calc(100% - 78px);
+}
+
+body.dark .home .text {
+    color: var(--text-color);
+}
+
+.profile {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    height: 500px;
+    max-width: 600px;
+    margin: 20px auto;
+    margin-top: -100px;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll !important;
+
+}
+
+.profile img {
+    max-width: 100%;
+    /* Asegura que la imagen no sea más ancha que el contenedor */
+    max-height: 200px;
+    /* Ajusta la altura máxima según tus necesidades */
+    object-fit: cover;
+    /* Asegura que la imagen cubra el espacio asignado sin perder proporción */
+    display: block;
+    /* Elimina el espacio extra debajo de la imagen */
+    margin: 0 auto 20px;
+    /* Centra la imagen y añade espacio debajo */
+    border-radius: 50%;
+    /* Opcional: para hacer la imagen circular */
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-data {
+    flex: 1;
+    padding: 5px;
+}
+
+.user-data strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.user-data p {
+    margin-top: 5px;
+}
+
+.info .picture:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 10px;
+}
+
+.info .picture:before img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+}

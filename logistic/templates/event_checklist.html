@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Evento</title>
+    <link rel="stylesheet" href="{% static 'styles/event_checklist.css' %}">
+</head>
+
+<body>
+
+    <header class="user-container">
+        <div class="icesi aling-left">
+            <img src="{% static 'images/logo-icesi-azul.webp' %}">
+        </div>
+
+        <div class="notification aling-right">
+            <img src="/static/icons/campana.png">
+        </div>
+
+        <div class="user-info">
+            <p>{{ request.user.username }}</p>
+
+        </div>
+
+        <div class="user-image">
+            <a href="{% url 'user_profile' %}">
+                <img src="/static/images/profile.jpg">
+            </a>
+        </div>
+    </header>
+
+    <section class="main">
+
+        <nav class="sidebar close">
+
+            <header>
+                <div class="text logo">
+                    <span>MENU</span>
+                </div>
+                <img src="{% static 'icons/menu.png' %}" class="toggle">
+            </header>
+
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul>
+                        <div class="menu-items">
+                            <li>
+                                <a href="{% url 'home' %}">
+                                    <img src="{% static 'icons/home.png' %}" class="icon">
+                                    <span class="text nav-text">Inicio</span>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="{% url 'create_event' %}">
+                                    <img src="{% static 'icons/create.png' %}" class="icon">
+                                    <span class="text nav-text">Crear Evento</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'users_search' %}">
+                                    <img src="{% static 'icons/lupa.png' %}" class="icon">
+                                    <span class="text nav-text">Buscar Usuario</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'events_calendar' %}">
+                                    <img src="{% static 'icons/calendar.png' %}" class="icon">
+                                    <span class="text nav-text">Calendario</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'historic_deleted_events' %}">
+                                    <img src="{% static 'icons/trash.png' %}" class="icon">
+                                    <span class="text nav-text">Historial</span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="bottom-content">
+                    <li>
+                        <a href="{% url 'logout' %}">
+                            <img src="{% static 'icons/logout.png' %}" class="icon">
+                            <span class="text nav-text">Salir</span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <div class="sun-moon">
+                            <img src="{% static 'icons/luna.png' %}" class="moon">
+                            <img src="{% static 'icons/sol.png' %}" class="sun">
+                        </div>
+                        <span class="mode-text text">Modo Oscuro</span>
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                </div>
+
+            </div>
+            </div>
+        </nav>
+
+        <div class="home">
+            <div class="container">
+                <h1 class="text">Detalles del Evento</h1>
+                <div class="event-checklist">
+                    <div class="event-detail">
+                        <p><strong>Nombre del evento:</strong> <span id="nameEvent">{{event.name}}</span></p>
+                        <p><strong>Fecha de ejecución:</strong> <span id="executionDate">{{event.executionDate}}</span>
+                        </p>
+                        <p><strong>Lugar:</strong> <span id="place">{{event.place}}</span></p>
+                    </div>
+                    
+                    <div>
+                        <a href="{% url 'create_task' event_id=event.id %}" class="new-task">
+                            <img src="{% static 'icons/tarea.png' %}" class="nueva-tarea">
+                            <span>Crear una tarea</span>
+                        </a>
+                    </div>
+
+                    <form method="POST" action="{% url 'event_checklist' event.id %}">
+                        {% csrf_token %}
+                        <div class="event-detail">
+                            <h2>Checklist de Tareas para {{ event.name }}</h2>
+                            {{ formset.management_form }} <!-- Importante para controlar el formset -->
+                            <ul>
+                                {% for form in formset %}
+                                <li>
+                                    {{ form.id }}
+                                    {{ form.done }}
+                                    <a href="{% url 'edit_task' form.instance.id %}" class="task-link">{{ form.instance.name }}</a>
+                                    {% if form.done.errors %} <!-- Errores de validación si existen -->
+                                    <div class="errors">{{ form.done.errors }}</div>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-save" type="submit">Guardar Cambios</button>
+                            <a href="{% url 'home' %}" class=" btn btn-cancel">Cancelar</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="{% static 'js/home.js' %}"></script>
+</body>
+
+</html>
